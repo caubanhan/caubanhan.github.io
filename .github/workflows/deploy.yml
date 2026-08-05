@@ -20,6 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v3
+        with:
+          # runner mặc định là Node 20, Astro 7 đòi >=22.12
+          node-version: 22
 
   deploy:
     needs: build
