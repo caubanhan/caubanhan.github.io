@@ -43,7 +43,9 @@ a:focus-visible { outline: 1px solid var(--sig); outline-offset: 3px; }
 /* ── bốn góc màn hình ─────────────────────────────── */
 .corner {
   position: fixed;
-  z-index: 2;
+  /* phải cao hơn .page — .page phủ kín 100svh và nằm sau trong HTML,
+     để bằng z-index là nó đè lên, nuốt mất cú bấm vào bốn góc */
+  z-index: 3;
   font-size: 0.75rem;
   color: var(--dim);
   letter-spacing: .02em;
