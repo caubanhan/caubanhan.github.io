@@ -1,0 +1,16 @@
+---
+// Một nét số 3, xoay đúng 90°. Hai bụng của số 3 ngóc lên thành hai vòm
+// chữ M, chỗ thắt lưng rơi vào giữa. Đừng đổi transform.
+const { size = 34, stroke = 1.6 } = Astro.props;
+---
+<svg class="mark" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-label="nhan tran">
+  <path d="M6.6 7.2
+           C6.6 3.9 9.6 2.4 12.4 3.2
+           C15.4 4.1 16.9 7.2 15.6 9.8
+           C14.9 11.2 13.6 11.9 12.2 12
+           C13.9 12.1 15.6 12.9 16.5 14.4
+           C18 17 16.7 20.3 13.7 21
+           C10.7 21.7 7.6 20.1 6.9 17.2"
+        transform="rotate(-90 12 12)"
+        stroke-width={stroke} stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

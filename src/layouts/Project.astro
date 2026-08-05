@@ -1,0 +1,40 @@
+---
+import Base from './Base.astro';
+import Mark from '../components/Mark.astro';
+const { frontmatter } = Astro.props;
+const { title, lede, status = 'active', year, stats = [], links = [] } = frontmatter;
+---
+<Base title={`${title} — nhan tran`} description={lede}>
+  <a class="corner c-tl" href="/" aria-label="về trang chủ"><Mark size={30} /></a>
+
+  <article class="sheet">
+    <div class="status">
+      <span class={status === 'active' ? 'sq' : 'sq off'}></span>{status} · {year}
+    </div>
+    <h1>{title}</h1>
+    <p class="lede">{lede}</p>
+
+    {stats.length > 0 && (
+      <div class="stats">
+        {stats.map((s) => (
+          <div>
+            <div class="stat-n">{s.n}</div>
+            <div class="stat-l">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <div class="prose"><slot /></div>
+
+    {links.length > 0 && (
+      <div class="out">
+        {links.map((l) => (
+          <a href={l.href} target="_blank" rel="noopener">{l.label}</a>
+        ))}
+      </div>
+    )}
+
+    <div class="foot">nhan tran · <a href="/">trang chủ</a></div>
+  </article>
+</Base>

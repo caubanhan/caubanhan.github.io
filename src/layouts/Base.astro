@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+
+const {
+  title,
+  description = 'Nhan Tran — network engineer and builder in Ho Chi Minh City.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" type="application/rss+xml" title="nhan tran" href="/rss.xml" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary" />
+</head>
+<body>
+  <slot />
+
+  <script is:inline>
+    // ── chữ lắng xuống thành hình ────────────────────────────────
+    // Mặc định chữ HIỆN SẴN. Script chỉ THÊM hiệu ứng rồi gỡ ra.
+    // Nếu script chết hoặc bị chặn, trang vẫn đọc được bình thường.
+    (() => {
+      const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (REDUCED) return;
+
+      function dustify(el) {
+        const text = el.textContent.replace(/\s+/g, ' ').trim();
+        el.textContent = '';
+        const cells = [];
+        text.split(' ').forEach((word, wi, all) => {
+          const wd = document.createElement('span');
+          wd.className = 'wd';
+          for (const c of word) {
+            const s = document.createElement('span');
+            s.className = 'ch';
+            s.textContent = c;
+            wd.appendChild(s);
+            cells.push(s);
+          }
+          el.appendChild(wd);
+          if (wi < all.length - 1) el.appendChild(document.createTextNode(' '));
+        });
+        return cells;
+      }
+
+      document.querySelectorAll('[data-dust]').forEach((el) => {
+        const cells = dustify(el);
+        const base = 260 + (+el.dataset.seq || 0) * 95;
+        // chuỗi dài thì mỗi ký tự nhanh hơn, để không lê thê
+        const step = Math.min(16, 780 / Math.max(cells.length, 1));
+        cells.forEach((c) => c.classList.add('dust'));
+        cells.forEach((c, i) => {
+          setTimeout(() => c.classList.remove('dust'), base + i * step + Math.random() * 40);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
