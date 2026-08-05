@@ -11,8 +11,8 @@ const projects = Object.values(import.meta.glob('./work/*.md', { eager: true }))
   .sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 
 const social = [
-  { label: 'github', href: 'https://github.com/caubanhan' },
-  { label: 'linkedin', href: 'https://www.linkedin.com/in/nhantran21' },
+  { label: 'GitHub', href: 'https://github.com/caubanhan' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nhantran21' },
 ];
 ---
 <Base title="nhan tran">
@@ -20,7 +20,7 @@ const social = [
 
   <div class="corner c-tl"><Mark /></div>
   <div class="corner c-tr" data-dust data-seq="11">v1.0.0</div>
-  <div class="corner c-bl" data-dust data-seq="11">email: nhan at this domain</div>
+  <div class="corner c-bl" data-dust data-seq="11">email: xabak4 at this site</div>
   <div class="corner c-br">
     {social.map((s, i) => (
       <a href={s.href} target="_blank" rel="me noopener" data-dust data-seq={12 + i}>{s.label}</a>
