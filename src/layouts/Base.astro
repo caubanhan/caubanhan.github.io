@@ -59,9 +59,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 
       document.querySelectorAll('[data-dust]').forEach((el) => {
         const cells = dustify(el);
-        const base = 260 + (+el.dataset.seq || 0) * 95;
-        // chuỗi dài thì mỗi ký tự nhanh hơn, để không lê thê
-        const step = Math.min(16, 780 / Math.max(cells.length, 1));
+        const base = 300 + (+el.dataset.seq || 0) * 120;
+        // chuỗi dài thì mỗi ký tự nhanh hơn, để không lê thê.
+        // trần 1150ms cho cả khối — trên mức này là bắt đầu sốt ruột.
+        const step = Math.min(26, 1150 / Math.max(cells.length, 1));
         cells.forEach((c) => c.classList.add('dust'));
         cells.forEach((c, i) => {
           setTimeout(() => c.classList.remove('dust'), base + i * step + Math.random() * 40);

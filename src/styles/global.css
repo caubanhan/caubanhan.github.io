@@ -140,9 +140,9 @@ a.li.off:hover .nm { color: var(--mid); border-bottom-color: var(--dim); }
   display: inline-block;
   white-space: pre;
   transition:
-    opacity .78s var(--ease),
-    filter .78s var(--ease),
-    transform .9s var(--ease);
+    opacity 1.05s var(--ease),
+    filter 1.05s var(--ease),
+    transform 1.2s var(--ease);
 }
 /* trạng thái bụi — script thêm vào rồi gỡ ra */
 .ch.dust { opacity: 0; filter: blur(7px); transform: translate3d(0, 8px, 0) scale(.88); }
