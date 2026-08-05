@@ -107,7 +107,9 @@ a:focus-visible { outline: 1px solid var(--sig); outline-offset: 3px; }
   text-transform: uppercase;
   padding-top: .35em;
   padding-right: 1.25rem;
-  text-align: right;
+  /* canh trái để INFO. / WORK. / LOG. cùng bắt đầu một điểm —
+     canh phải thì nhãn ngắn hơn bị lùi vào trông như lỗi */
+  text-align: left;
   white-space: nowrap;
 }
 
